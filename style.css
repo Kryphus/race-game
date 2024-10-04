@@ -19,8 +19,8 @@ body {
     align-items: center;
     font-family: 'Short Stack', cursive;
     background-color: rgb(253, 247, 241);
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-    url(./img/forest-bg.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(./img/forest-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -33,7 +33,25 @@ img {
 
 button {
     font: inherit;
-    
+    background-color: transparent;
+    color: white;
+
+}
+
+input {
+    width: 150px; 
+    height: 30px; 
+    padding: 5px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 14px;
+    outline: none; 
+    font: inherit;
+}
+
+input:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
 
 #track-container {
@@ -49,16 +67,20 @@ button {
     border-radius: 15px;
     gap: 45px;
     position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.445);
 }
 
 .track {
     width: 100%;
     display: flex;
     align-items: center;
-    
+    position: relative;
+
 }
 
-.track1, .track2 {
+.track1,
+.track2 {
     border-bottom: 4px dotted white;
 }
 
@@ -70,18 +92,112 @@ button {
 
 }
 
+
+.track p {
+    width: 173px;
+    text-align: center;
+}
+
+/*  */
+
+.track div {
+    position: relative;
+    margin-right: 20px;
+}
+
+.track p {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.duckGif {
+    display: block;
+    height: 150px;
+    z-index: 0;
+}
+
+/*  */
 /* scoreboard */
 #score-container {
     position: absolute;
-    right: 0px;
-    bottom: 0px; 
+    background: url('./img/scoreboard.png');
+    background-size: cover;
+    right: -270px;
+    bottom: -50px;
     height: 400px;
-    z-index: 1;
-    background: url("./img/scoreboard.png");
+    width: 400px;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 70px;
+ 
 }
 
-#score-container img {
-    height: 100%;
-    filter: brightness(0.9);
+#score-container p {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: rgba(121, 74, 74, 0.952);
 }
 
+
+
+/* hanging container for the winner */
+#hanging-container {
+    position: absolute;
+    top: -150px;
+    height: 500px;
+    width: 500px;
+    background: url("./img/hanging-board.png");
+    background-size: cover;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding-top: 50px;
+    padding-left: 90px;
+    z-index: 3;
+}
+
+#hanging-container h3 {
+    font-size: 2.5rem;
+    color: white;
+    text-align: center;
+}
+
+#hanging-container button {
+    border-radius: 10px;
+    padding: 5px 10px;
+    border-color: white;
+}
+
+#hanging-container button:hover {
+    background-color: #45a049; 
+}
+
+#buttons {
+    display: flex;
+    gap: 2rem;
+}
+
+#buttons button {
+    padding: 20px 40px;
+    border-radius: 20px;
+    border-color: white;
+    background-color: rgba(80, 27, 27, 0.459);
+    font-size: 1.3rem;
+}
+
+#buttons button:hover {
+    background-color: rgba(117, 76, 76, 0.459);
+}
+
+.playerName {
+    cursor: pointer;
+}

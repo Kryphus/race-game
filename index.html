@@ -10,31 +10,43 @@
 </head>
 
 <body>
-
-    <div id="game-container">
-
-    </div>
-    <div id="score-container">
-        <img src="./img/scoreboard.png" alt="scoreboard">
-    </div>
-
     <div id="track-container">
+        <div id="score-container">
+            <p>P1 &nbsp; <span id="player1Score">0</span></p>
+            <p>P2 <span id="player2Score">0</span></p>
+            <p>P3 <span id="player3Score">0</span></p>
+        </div>
+
         <div class="track track1">
-            <img class="duckGif" src="./img/duck1.gif" alt="duck racer one" id="m1">
+            <div id="m1">
+                <p class="playerName" id="player1Name">Player 1</p>
+                <img class="duckGif" src="./img/duck1.gif" alt="duck racer one">
+            </div>
         </div>
         <div class="track track2">
-            <img class="duckGif" src="./img/duck1.gif" alt="duck racer two" id="m2">
+            <div id="m2">
+                <p class="playerName" id="player2Name">Player 2</p>
+                <img class="duckGif" src="./img/duck1.gif" alt="duck racer two">
+            </div>
         </div>
         <div class="track track3">
-            <img class="duckGif" src="./img/duck1.gif" alt="duck racer three" id="m3">
+            <div id="m3">
+                <p class="playerName" id="player3Name">Player 3</p>
+                <img class="duckGif" src="./img/duck1.gif" alt="duck racer three">
+            </div>
         </div>
 
         <img id="finish-line-img" src="./img/finish-line.png" alt="">
     </div>
 
-    <div id="button">
-        <button type="button" id="btnStart" onclick="startAnimation();">START</button>
+    <div id="buttons">
+        <button class="button-55" type="button" id="btnStart" onclick="startAnimation();">START</button>
         <button type="button" id="btnStop" onclick="stopAnimation();">STOP</button>
+    </div>
+
+    <div id="hanging-container">
+        <h3><span>Player</span> won</h3>
+        <button id="restartButton">Restart Game</button>
     </div>
 </body>
 

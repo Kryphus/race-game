@@ -1,3 +1,4 @@
+// Change ducks when clicked functionality
 document.addEventListener('DOMContentLoaded', () => {
     const duckGifs = ["./img/duck1.gif", "./img/duck2.gif", "./img/duck3.gif", "./img/duck4.gif", "./img/duck5.gif", "./img/duck6.gif"];
 
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Lab 5
 console.log('test')
 
 var idInterval;
@@ -35,43 +37,36 @@ function startAnimation() {
 }
 
 function move_a_step() {
-
-    //Check for winner
     var goal1 = document.querySelector(".track1").clientWidth;
     var goal2 = document.querySelector(".track2").clientWidth;
     var goal3 = document.querySelector(".track3").clientWidth;
 
     if (x1 >= goal1 && x1 == Math.max(x1, x2, x3)) {
         clearInterval(idInterval);
-        alert("Winner: Monster 1");
-        window.location.reload(true);
-        return;
+        showWinner("Player 1");
+        return; 
     }
 
     if (x2 >= goal2 && x2 == Math.max(x1, x2, x3)) {
         clearInterval(idInterval);
-        alert("Winner: Monster 2");
-        window.location.reload(true);
-        return;
+        showWinner("Player 2");
+        return; 
     }
 
     if (x3 >= goal3 && x3 == Math.max(x1, x2, x3)) {
         clearInterval(idInterval);
-        alert("Winner: Monster 3");
-        window.location.reload(true);
-        return;
+        showWinner("Player 3");
+        return; 
     }
-
 
     x1 += v1;
     x2 += v2;
     x3 += v3;
 
-    document.getElementById("m1").style.paddingLeft = x1 + "px";
-    document.getElementById("m2").style.paddingLeft = x2 + "px";
-    document.getElementById("m3").style.paddingLeft = x3 + "px";
-    console.log(`moving...`)
-
+    document.querySelector("#m1").style.transform = `translateX(${x1}px)`;
+    document.querySelector("#m2").style.transform = `translateX(${x2}px)`;
+    document.querySelector("#m3").style.transform = `translateX(${x3}px)`;
+    console.log(`moving...`);
 }
 
 function stopAnimation() {
@@ -81,4 +76,97 @@ function stopAnimation() {
     document.getElementById("btnStop").disabled = true;
     clearInterval(idInterval);
 }
+
+function showWinner(winner) {
+    const hangingContainer = document.getElementById('hanging-container');
+    hangingContainer.querySelector('h3 span').textContent = winner; 
+    hangingContainer.style.display = 'flex'; 
+    hangingContainer.style.flexDirection = 'column';
+    hangingContainer.style.gap = '10px';
+
+}
+
+document.getElementById('restartButton').onclick = function() {
+    window.location.reload(); 
+};
+
+// for player name
+document.querySelectorAll('.playerName').forEach(nameElement => {
+    nameElement.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.textContent; 
+        input.classList.add('editPlayerName'); 
+
+        this.replaceWith(input);
+        input.focus();
+
+        input.addEventListener('blur', function() {
+            savePlayerName(input);
+        });
+        input.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                savePlayerName(input);
+            }
+        });
+    });
+});
+
+function savePlayerName(input) {
+    const oldName = input.previousElementSibling ? input.previousElementSibling.textContent : input.getAttribute('data-old-name');
+    const newName = input.value;
+    
+    if (playerScores.hasOwnProperty(oldName)) {
+        playerScores[newName] = playerScores[oldName];
+        delete playerScores[oldName];
+    }
+
+    const newP = document.createElement('p');
+    newP.textContent = newName;
+    newP.classList.add('playerName');
+    newP.addEventListener('click', function() {
+        input.replaceWith(newP);
+    });
+
+    input.replaceWith(newP);
+}
+
+// Best of 3 rounds functinalities
+let round = 1;
+let playerScores = { "Player 1": 0, "Player 2": 0, "Player 3": 0 };
+const maxRounds = 3;
+
+
+function resetRace() {
+    clearInterval(idInterval); 
+    x1 = x2 = x3 = 0; 
+    document.querySelector("#m1").style.transform = `translateX(${x1}px)`; 
+    document.querySelector("#m2").style.transform = `translateX(${x2}px)`; 
+    document.querySelector("#m3").style.transform = `translateX(${x3}px)`;
+    document.getElementById("btnStart").disabled = false; 
+    document.getElementById("btnStop").disabled = true; 
+    document.getElementById('hanging-container').style.display = 'none'; 
+}
+
+function showWinner(winner) {
+    playerScores[winner] += 1; 
+    updateScoreDisplay(); 
+
+    if (playerScores[winner] >= 3) {
+        const hangingContainer = document.getElementById('hanging-container');
+        hangingContainer.querySelector('h3 span').textContent = winner; 
+        hangingContainer.style.display = 'flex'; 
+        hangingContainer.style.flexDirection = 'column';
+        hangingContainer.style.gap = '10px';
+    } else {
+        setTimeout(resetRace, 1000);
+    }
+}
+
+function updateScoreDisplay() {
+    document.getElementById('player1Score').textContent = playerScores['Player 1'];
+    document.getElementById('player2Score').textContent = playerScores['Player 2'];
+    document.getElementById('player3Score').textContent = playerScores['Player 3'];
+}
+
 
