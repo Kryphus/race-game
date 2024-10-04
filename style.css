@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+* {
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Short Stack', cursive;
+    background-color: rgb(253, 247, 241);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url(./img/forest-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+
+img {
+    height: 150px;
+}
+
+button {
+    font: inherit;
+    
+}
+
+#track-container {
+    margin: 1.5rem 0;
+    background-color: rgb(135, 185, 223);
+    width: 1050px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 180px;
+    padding-left: 30px;
+    border-radius: 15px;
+    gap: 45px;
+    position: relative;
+}
+
+.track {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.track1, .track2 {
+    border-bottom: 4px dotted white;
+}
+
+#finish-line-img {
+    position: absolute;
+    transform: scale(1.5);
+    right: 170px;
+    height: 400px;
+
+}
+
+/* scoreboard */
+#score-container {
+    position: absolute;
+    right: 0px;
+    bottom: 0px; 
+    height: 400px;
+    z-index: 1;
+    background: url("./img/scoreboard.png");
+}
+
+#score-container img {
+    height: 100%;
+    filter: brightness(0.9);
+}
+

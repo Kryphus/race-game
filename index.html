@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck Race Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+
+    <div id="game-container">
+
+    </div>
+    <div id="score-container">
+        <img src="./img/scoreboard.png" alt="scoreboard">
+    </div>
+
+    <div id="track-container">
+        <div class="track track1">
+            <img class="duckGif" src="./img/duck1.gif" alt="duck racer one" id="m1">
+        </div>
+        <div class="track track2">
+            <img class="duckGif" src="./img/duck1.gif" alt="duck racer two" id="m2">
+        </div>
+        <div class="track track3">
+            <img class="duckGif" src="./img/duck1.gif" alt="duck racer three" id="m3">
+        </div>
+
+        <img id="finish-line-img" src="./img/finish-line.png" alt="">
+    </div>
+
+    <div id="button">
+        <button type="button" id="btnStart" onclick="startAnimation();">START</button>
+        <button type="button" id="btnStop" onclick="stopAnimation();">STOP</button>
+    </div>
+</body>
+
+</html>
