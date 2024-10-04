@@ -19,7 +19,7 @@ body {
     align-items: center;
     font-family: 'Short Stack', cursive;
     background-color: rgb(253, 247, 241);
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%),
         url(./img/forest-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -47,11 +47,7 @@ input {
     font-size: 14px;
     outline: none; 
     font: inherit;
-}
-
-input:focus {
-    border-color: #007bff; 
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+    text-align: center;
 }
 
 #track-container {
@@ -190,14 +186,18 @@ input:focus {
     padding: 20px 40px;
     border-radius: 20px;
     border-color: white;
-    background-color: rgba(80, 27, 27, 0.459);
+    background-color: rgba(16, 54, 35, 0.459);
     font-size: 1.3rem;
 }
 
 #buttons button:hover {
-    background-color: rgba(117, 76, 76, 0.459);
+    background-color: rgba(15, 119, 32, 0.459);
 }
 
 .playerName {
     cursor: pointer;
+}
+
+#m1, #m2, #m3 {
+    margin-right: 25px;
 }
